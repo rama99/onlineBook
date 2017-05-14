@@ -1,0 +1,64 @@
+
+<br>&nbsp;
+
+<!--Large modal-->
+<button class="btn btn-primary" (click)="lgModal.show()">Add new Chapter</button>
+
+<div class="row">
+    <div class="col-md-4" style="border:1px solid black;height:700px">
+
+        <tree-root #tree [nodes]="nodes">
+            <ng-template #treeNodeTemplate let-node let-index="index">
+                <span>{{ node.data.name }}</span>
+                <button class="glyphicon glyphicon-ok-circle" (click)="go(node)"></button>
+                <button class="glyphicon glyphicon-remove-circle" (click)="go(node.data.name)"></button>
+            </ng-template>
+        </tree-root>
+    </div>
+    <div class="col-md-8" style="border:1px solid black;height:700px">
+        {{content}}
+    </div>
+</div>
+
+<!-- Large Model -->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Enter New Chapter Details</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+                <input type="text" placeholder="Chapter Name" id="txt" [(ngModel)]="newChapter" class="form-control" />      
+                <textarea class="form-control" placeholder="Overview" [(ngModel)]="newOverView"></textarea><br>&nbsp;
+                <button style="position:inline" class="btn btn-primary" (click)="addChapter()"> Add a new chapter</button>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Context Menu -->
+<ul>
+    <li *ngFor="let item of items" [contextMenu]="basicMenu" [contextMenuSubject]="item">Right Click: {{item?.name}}</li>
+</ul>
+
+<context-menu>
+  <ng-template contextMenuItem (execute)="showMessage('Hi, ' + $event.item.name)">
+    Say hi!
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem let-item (execute)="showMessage($event.item.name + ' said: ' + $event.item.otherProperty)">
+    Bye, {{item?.name}}
+  </ng-template>
+  <ng-template contextMenuItem passive="true">
+    Input something: <input type="text">
+  </ng-template>
+</context-menu>
+    
+
+    
