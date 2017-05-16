@@ -2,6 +2,10 @@ import { Component , OnInit , ViewChild , Input , ElementRef , AfterViewInit } f
 import { AppService } from './app.service';
 import { TreeComponent } from 'angular-tree-component';
 
+import { Observable }  from 'rxjs/Observable';
+
+
+
 //import { Overlay } from 'angular2-modal';
 //import { Modal } from 'angular2-modal/plugins/bootstrap';
 
@@ -29,6 +33,7 @@ export class AppComponent implements OnInit , AfterViewInit {
 
     newChapter:string;
     newOverView:string;
+    allChapters:Observable<any>;
 
     @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
 
@@ -39,16 +44,23 @@ export class AppComponent implements OnInit , AfterViewInit {
     ) { }    
 
     ngOnInit() {
-      this.nodes = this.service.loaddata();        
+      this.nodes = this.service.loaddata();      
+
+      this.allChapters = this.service.getChapters();  
     }
 
     ngAfterViewInit() {
       
     }
 
+    onActivate() {
+      alert('onActivate');
+    }
+
     go(node:any) {
+      console.log('goooooooooooo');
       alert(JSON.stringify(node.data));
-      this.content = JSON.stringify(node.data);
+      this.content = "data comes here......";
     }
 
     addChapter() {

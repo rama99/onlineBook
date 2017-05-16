@@ -9,8 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 var AppService = (function () {
-    function AppService() {
+    function AppService(http) {
+        this.http = http;
         this.nodes = [];
     }
     AppService.prototype.loaddata = function () {
@@ -37,11 +39,14 @@ var AppService = (function () {
             ]
         });
     };
+    AppService.prototype.getChapters = function () {
+        return this.http.get('http://localhost:9000/chapters');
+    };
     return AppService;
 }());
 AppService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [http_1.Http])
 ], AppService);
 exports.AppService = AppService;
 //# sourceMappingURL=app.service.js.map

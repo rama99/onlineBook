@@ -25,12 +25,17 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
         this.nodes = this.service.loaddata();
+        this.allChapters = this.service.getChapters();
     };
     AppComponent.prototype.ngAfterViewInit = function () {
     };
+    AppComponent.prototype.onActivate = function () {
+        alert('onActivate');
+    };
     AppComponent.prototype.go = function (node) {
+        console.log('goooooooooooo');
         alert(JSON.stringify(node.data));
-        this.content = JSON.stringify(node.data);
+        this.content = "data comes here......";
     };
     AppComponent.prototype.addChapter = function () {
         console.log(this.newChapter);

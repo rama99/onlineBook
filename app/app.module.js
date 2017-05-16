@@ -9,6 +9,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
+var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var angular_tree_component_1 = require("angular-tree-component");
 var app_service_1 = require("./app.service");
@@ -26,6 +27,7 @@ AppModule = __decorate([
         imports: [platform_browser_1.BrowserModule,
             common_1.CommonModule,
             forms_1.FormsModule,
+            http_1.HttpModule,
             angular_tree_component_1.TreeModule,
             modal_1.ModalModule.forRoot(),
             ngx_contextmenu_1.ContextMenuModule

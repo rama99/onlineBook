@@ -2,6 +2,9 @@ import { NgModule  ,   } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+
 import { AppComponent } from './app.component';
 import { TreeModule } from 'angular-tree-component';
 import { AppService } from './app.service';
@@ -16,7 +19,8 @@ import { ContextMenuModule } from 'ngx-contextmenu';
 @NgModule({
     imports:[BrowserModule , 
     CommonModule , 
-    FormsModule ,  
+    FormsModule , 
+    HttpModule , 
     TreeModule ,
     ModalModule.forRoot(),
     ContextMenuModule

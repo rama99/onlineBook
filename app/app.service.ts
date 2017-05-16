@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 
+import { Http } from '@angular/http';
+import { Observable }  from 'rxjs/Observable';
+
 @Injectable()
 export class AppService {
-    constructor() { }
+
+    constructor(private http:Http) { }
 
     nodes = [
    /* {
@@ -57,6 +61,12 @@ export class AppService {
       ]
     });
 
+  }
+  
+  getChapters():Observable<any> {
 
-    }
+    return this.http.get('http://localhost:9000/chapters');
+
+  }
+
 }

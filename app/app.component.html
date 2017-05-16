@@ -1,17 +1,17 @@
 
 <br>&nbsp;
-
+Here {{ allChapters | async}}<br>
 <!--Large modal-->
 <button class="btn btn-primary" (click)="lgModal.show()">Add new Chapter</button>
 
 <div class="row">
     <div class="col-md-4" style="border:1px solid black;height:700px">
 
-        <tree-root #tree [nodes]="nodes">
-            <ng-template #treeNodeTemplate let-node let-index="index">
+        <tree-root #tree [nodes]="nodes" (onActivate)="onActivate()">
+            <ng-template #treeNodeTemplate let-node let-index="index" >
                 <span>{{ node.data.name }}</span>
                 <button class="glyphicon glyphicon-ok-circle" (click)="go(node)"></button>
-                <button class="glyphicon glyphicon-remove-circle" (click)="go(node.data.name)"></button>
+                <button class="glyphicon glyphicon-remove-circle" (click)="go(node.data.overView)"></button>
             </ng-template>
         </tree-root>
     </div>

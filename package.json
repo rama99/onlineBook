@@ -38,6 +38,7 @@
     "helmet": "3.6.0",
     "jquery": "3.2.1",
     "method-override": "2.3.8",
+    "mongodb": "2.2.26",
     "morgan": "1.8.1",
     "ngx-bootstrap": "1.6.6",
     "ngx-contextmenu": "1.0.4",
